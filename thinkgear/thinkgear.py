@@ -26,8 +26,6 @@
 
 import sys
 
-import serial
-
 from cStringIO import StringIO
 
 import struct
@@ -62,11 +60,9 @@ class ThinkGearProtocol(object):
 
     # The _read/_deread scheme is untested
 
-    def __init__(self, port):
-        # TODO: Handle bluetooth rfcomm setup
-        # TODO: ???
-
-        self.serial = serial.Serial(port, 57600)
+    def __init__(self, socket):
+        # minor change by Shuiskij Dmitry, to allow pass socket
+        self.serial = socket
         self.preread = StringIO()
         self.io = self.serial
 
